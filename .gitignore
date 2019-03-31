@@ -1,0 +1,11 @@
+#omit .pyc
+
+*.pyc
+
+#omit .idea
+
+*.idea
+
+#omit .txt
+
+*.txt
