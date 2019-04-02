@@ -69,3 +69,28 @@ def type_checker(*ty_args, **ty_kwargs):
             return func(*args, **kwargs)
         return inner_func
     return wrapper
+
+
+# 异常捕获
+def exception_cap(throws=False, log_exception=True):
+    """
+
+    :param throws: 将异常再次抛出
+    :param log_exception: 是否打印异常信息
+    :return:
+    """
+    def wrapper(func):
+        @functools.wraps(func)
+        def inner_func(*args, **kwargs):
+            try:
+                ret = func(*args, **kwargs)
+            except Exception as e:
+                if throws:
+                    raise e
+                if log_exception:
+                    logging.error("[%s] raise exception with %s", func.__name__, e)
+                return e, None
+            return None, ret
+        return inner_func
+    return wrapper
+

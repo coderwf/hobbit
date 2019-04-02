@@ -8,7 +8,9 @@ class PermissionManageService:
     负责组装权限模块
     """
     identity_key_permission_class_map = {}
-    cancelled_identity_key_permission_class_map = {}
+
+    def __init__(self):
+        raise Exception("Can't declare a %s class obj" % __class__.__name__)
 
     @staticmethod
     def register(identity_key, permission_class):
@@ -55,6 +57,17 @@ class PermissionManageService:
         return PermissionCheckRes(success=False)
 
 
+# 将该权限装载
+def auto_register_permission(identity_key, overwrite=False):
+    def wrapper(cls):
+        if overwrite or not not hasattr(cls, "identity_key"):
+            setattr(cls, "identity_key", identity_key)
+        # 注册该权限
+        PermissionManageService.register(getattr(cls, "identity_key"), cls)
+        return cls
+    return wrapper
+
+
 class AccessControlService:
     def __init__(self, operator_id):
         self.operator_id = operator_id
@@ -89,7 +102,7 @@ class AccessControlService:
 
     @staticmethod
     def unregister_permissions(identity_key_list: list):
-        for identity_key in identity_key_list:
+        for identity_key in set(identity_key_list):
             PermissionManageService.unregister(identity_key)
 
     def _has_permission(self, permission_identity_key, user_obj, *args, **kwargs):
