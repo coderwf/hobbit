@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
-from access_control.permission.base import AbstractPermission, PermissionCheckRes
-from access_control.permission.services import auto_register_permission
+from hobbit.access_control.permission.base import AbstractPermission, PermissionCheckRes
+from hobbit.access_control.permission import auto_register_permission
 
 
 class PostPermission:

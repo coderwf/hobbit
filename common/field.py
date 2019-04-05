@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 from django.db import models
-from common.pycrypt import AESEncrypt, hash_encode
+from common.crypto.pycrypt import AESEncrypt, hash_encode
 
 
 aes_encrypt = AESEncrypt()

@@ -1,5 +1,5 @@
 # -*- coding:utf-8 -*-
-from access_control.permission.services import PermissionManageService
+from hobbit.access_control.permission import PermissionManageService
 
 
 class PostPermissionService(PermissionManageService):

@@ -7,7 +7,7 @@ import random
 from Crypto.Cipher import AES
 
 
-def hash_encode(data: str, salt: str = "", encoding=None):
+def hash_encode(data, salt: str = "", encoding=None):
     """
     对data进行md5加密
     :param data: 需要进行编码的数据

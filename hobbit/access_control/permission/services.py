@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 import logging
-from access_control.permission.base import AbstractPermission, PermissionCheckRes
+from hobbit.access_control.permission.base import AbstractPermission, PermissionCheckRes
 
 
 class PermissionManageService:

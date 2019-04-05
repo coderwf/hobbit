@@ -1,5 +1,5 @@
 # -*- coding:utf-8 -*-
-from common.pycrypt import hash_encode
+from common.crypto.pycrypt import hash_encode
 """
 email注册激活找回密码等服务
 """
